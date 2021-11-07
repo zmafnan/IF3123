@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!-- NIM   = 3411191109 -->
+<!-- Nama  = ZIkri Afnan -->
+<!-- Kelas = DSE-C -->
+<html>
+<head>
+	<title>Tugas Implementasi Interface</title>
+</head>
+<body>
+
+<form name="formTugas" action="" onsubmit="return validateForm()"method="POST">
+<input type="text" name="username" id="username"
+placeholder="Username" ><br>
+<input type="password" name="password" id="password"
+placeholder="Password"><br>
+<input type="password" name="repeat" id="repeat" placeholder="UlangiPassword"><br>
+<input type="text" name="email" id="email" placeholder="Email"><br>
+<input type="text" name="telp" id="telp" placeholder="NomorTelpon"><br>
+<textarea id="alamat" style="width: 167px;">Alamat</textarea><br>
+<input type="submit" name="" value="Submit">
+
+</form>
+<script type="text/javascript">
+	function validateForm(){
+		var user = document.formTugas.username.value;
+		if(user.length < 3 || user.length > 15){
+			alert("Username 3-15 karakter");
+			return false;
+		}
+		var password = document.formTugas.password.value;
+		var regularExpression = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}$/;
+		if(!regularExpression.test(password)){
+			alert("Password min 4 digit harus ada Huruf besar Symbol dan Angka");
+			return false;
+		}
+		var repeat = document.formTugas.repeat.value;
+		if(repeat != password ){
+			alert("Ulangi Password harus sama dengan Password");
+			return false;
+		}
+		var email = document.formTugas.email.value;
+		var regularExpression2 = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})$/;
+		if(!regularExpression2.test(email)){
+			alert(" email harus berformat email");
+			return false;
+		}
+		var telp = document.formTugas.telp.value;
+		if(isNaN(telp)){
+			alert("Telp harus berupa angka");
+			return false;
+		}
+		if((telp.length<10) || (telp.length>12)){
+			alert("Nomor Telepon harus 10 - 12 digit");
+			return false;
+		}
+		var alamat = document.formTugas.alamat.value;
+		if (alamat == ""){
+			alert("Alamat Tidak Boleh Kosong");
+			return false;
+		}
+		
+		else{
+			return true;
+		}
+	}
+
+</script>
+</script>
+</body>
+</html>
